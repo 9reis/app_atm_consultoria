@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import br.com.lucas9reis.atmconsultoria.R;
+import mehdi.sakout.aboutpage.AboutPage;
+import mehdi.sakout.aboutpage.Element;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +62,31 @@ public class SobreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sobre, container, false);
+
+        String description = "A ATM Consultoria tem como missão apoiar organizações" +
+                "que desejam alcançar o sucesso através da excelencia em gestão e " +
+                "da busca pela qualidade.";
+
+        Element versao = new Element();
+        versao.setTitle("versão 1.0 ");
+
+        return new AboutPage(getActivity()) //Pega o contexto da activity
+                .setImage(R.drawable.logo)
+                .setDescription(description)
+
+                .addGroup("Entre em contato")
+                .addEmail("teste@teste","Envie um e-mail")
+                .addWebsite("http://google.com/", "Acesse nosso site")
+
+                .addGroup("Redes Sociais")
+                .addFacebook("9reis_", "Facebook")
+                .addInstagram("9reis_", "Instagram")
+                .addTwitter("9reis_", "Twitter")
+                .addYoutube("9reis_", "Youtube")
+
+                .addItem(versao)
+                .create();
+
+        // return inflater.inflate(R.layout.fragment_sobre, container, false);
     }
 }
